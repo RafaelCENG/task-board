@@ -5,7 +5,23 @@
 	"scripts": {
 		"dev:frontend": "nx serve frontend",
 		"dev": "concurrently \"nx serve frontend\" \"nx serve backend\"",
-		"dev:backend": "nx serve backend"
+		"dev:backend": "nx serve backend",
+		"build:backend": "nx build backend",
+		"typeorm": "TS_NODE_PROJECT=backend/tsconfig.app.json node -r ts-node/register/transpile-only -r tsconfig-paths/register ./node_modules/typeorm/cli.js -d backend/src/config/database.config.ts",
+		"migration:run": "npm run typeorm -- migration:run",
+		"migration:generate": "npm run typeorm -- migration:generate",
+		"migration:revert": "npm run typeorm -- migration:revert",
+		"migration:create": "npm run typeorm -- migration:create",
+		"migration:show": "npm run typeorm -- migration:show",
+		"migrate": "npm run typeorm -- migration:run -t=false",
+		"schema:sync": "npm run typeorm -- schema:sync",
+		"schema:drop": "npm run typeorm -- schema:drop",
+		"typeorm-ext": "TS_NODE_PROJECT=backend/tsconfig.app.json node -r ts-node/register/transpile-only -r tsconfig-paths/register ./node_modules/typeorm-extension/bin/cli.cjs -d backend/src/config/database.config.ts",
+		"db:create": "npm run typeorm-ext -- db:create",
+		"db:drop": "npm run typeorm-ext -- db:drop",
+		"seed:run": "npm run typeorm-ext -- seed:run --name",
+		"seed:run:all": "npm run typeorm-ext -- seed:run",
+		"seed:create": "typeorm-extension-esm seed:create --name"
 	},
 	"private": true,
 	"dependencies": {
@@ -16,14 +32,18 @@
 		"@angular/platform-browser": "~21.1.0",
 		"@angular/router": "~21.1.0",
 		"@nestjs/common": "^11.0.0",
+		"@nestjs/config": "^4.0.3",
 		"@nestjs/core": "^11.0.0",
 		"@nestjs/platform-express": "^11.0.0",
 		"@nestjs/typeorm": "^11.0.0",
 		"axios": "^1.6.0",
+		"dotenv": "^17.3.1",
 		"pg": "^8.19.0",
 		"reflect-metadata": "^0.1.13",
 		"rxjs": "~7.8.0",
-		"typeorm": "^0.3.28"
+		"typeorm": "^0.3.28",
+		"typeorm-extension": "^3.9.0",
+		"typeorm-naming-strategies": "^4.1.0"
 	},
 	"devDependencies": {
 		"@angular-devkit/build-angular": "~21.1.0",
@@ -58,6 +78,8 @@
 		"jsonc-eslint-parser": "^2.1.0",
 		"nx": "22.5.3",
 		"prettier": "~3.6.2",
+		"ts-node": "^10.9.2",
+		"tsconfig-paths": "^4.2.0",
 		"tslib": "^2.3.0",
 		"typescript": "~5.9.2",
 		"typescript-eslint": "^8.40.0",
