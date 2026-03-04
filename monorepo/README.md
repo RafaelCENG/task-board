@@ -85,7 +85,8 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 
 
 # Roadmap
-
+- [ ] Auth must be JWT token based. Use symetric signing (HS256) and produce Access Token + Refresh Token pair.
+- [ ] Use bcrypt to hash user passwords before saving the to the database.
 - [ ] Sign-up/sign-in page
 - [ ] New sign-up a new `default` board is created and saved to the database for the user.
 - [ ] Default board includes 4 default tasks (similar to the design).
@@ -100,7 +101,6 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - [ ] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
 - [ ] Your API endpoints must follow the REST architectural style.
 - [ ] API must include migrations and/or seeders to allow populating the Database. 
-- [ ] Auth must be JWT token based. Use symetric signing (HS256) and produce Access Token + Refresh Token pair.
 
 # How to Run a migration / seeding
 

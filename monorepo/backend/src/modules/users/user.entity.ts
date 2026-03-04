@@ -17,5 +17,5 @@ export class User {
 	password: string;
 
 	@CreateDateColumn({ nullable: true })
-	createdAt?: Date;
+	created_at?: Date;
 }
