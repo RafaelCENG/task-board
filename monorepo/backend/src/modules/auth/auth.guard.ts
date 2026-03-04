@@ -23,7 +23,6 @@ export class AuthGuard implements CanActivate {
 			context.getClass(),
 		]);
 		if (isPublic) {
-			// 💡 See this condition
 			return true;
 		}
 
@@ -33,11 +32,9 @@ export class AuthGuard implements CanActivate {
 			throw new UnauthorizedException();
 		}
 		try {
-			// 💡 Here the JWT secret key that's used for verifying the payload
-			// is the key that was passsed in the JwtModule
+			// Verifies using the access token secret only.
+			// Refresh tokens use a different secret and will be rejected here.
 			const payload = await this.jwtService.verifyAsync(token);
-			// 💡 We're assigning the payload to the request object here
-			// so that we can access it in our route handlers
 			request["user"] = payload;
 		} catch {
 			throw new UnauthorizedException();

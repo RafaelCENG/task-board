@@ -20,6 +20,9 @@ export class User {
 	@CreateDateColumn({ nullable: true })
 	created_at?: Date;
 
+	@Column({ nullable: true })
+	refreshToken?: string;
+
 	@OneToMany(
 		(type) => Board,
 		(board) => board.user,

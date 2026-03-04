@@ -1,7 +1,5 @@
 <!-- WEB APP-->
 
-
-
 # How to Run the Web APP
 
 ## Create ENV FILE
@@ -85,12 +83,15 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - [Nest-js encrypting password](https://medium.com/@awaisshaikh94/encrypting-passwords-in-nestjs-with-the-robust-hashing-mechanism-of-bcrypt-e052c7a499a3)
 - [Connect PostgreSQL to NestJS using TypeORM and View Data in PgAdmin
 ](https://www.youtube.com/watch?v=PP6SfHZE1uE)
-
+- [Building a Login and Registration System Using NestJS with TypeORM and PostgreSQL](https://dev.to/buildwithgagan/building-a-login-and-registration-system-using-nestjs-with-typeorm-and-postgresql-19hh)
+- [Cookie refresh token](https://stackoverflow.com/questions/79405724/refresh-token-coming-from-nest-js-as-cookie-does-not-get-persisted-after-refresh)
+- [nestjs-jwt-authentication-refresh-token](https://www.elvisduru.com/blog/nestjs-jwt-authentication-refresh-token)
+- [Helpful Github for token authentication](https://github.com/elvisduru/token-auth-app)
 
 # Roadmap
 - [x] Create DB tables and relations
-- [ ] Auth must be JWT token based. Use symetric signing (HS256) and produce Access Token + Refresh Token pair.
-- [ ] Use bcrypt to hash user passwords before saving the to the database.
+- [x] Auth must be JWT token based. Use symetric signing (HS256) and produce Access Token + Refresh Token pair. 
+- [x] Use bcrypt to hash user passwords before saving the to the database.
 - [ ] Sign-up/sign-in page
 - [ ] New sign-up a new `default` board is created and saved to the database for the user.
 - [ ] Default board includes 4 default tasks (similar to the design).
@@ -105,6 +106,10 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - [ ] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
 - [ ] Your API endpoints must follow the REST architectural style.
 - [ ] API must include migrations and/or seeders to allow populating the Database. 
+
+
+# Improvements
+-  Pass refresh token using cookies to avoid XSS attacks and to make it more secure.
 
 # How to Run a migration / seeding
 

@@ -6,18 +6,22 @@ import { AuthController } from "./auth.controller";
 import { AuthGuard } from "./auth.guard";
 import { AuthService } from "./auth.service";
 import { jwtConstants } from "./constants";
+import { AccessTokenStrategy } from "./strategies/accessToken.strategy";
+import { RefreshTokenStrategy } from "./strategies/refreshToken.strategy";
 
 @Module({
 	imports: [
 		UsersModule,
 		JwtModule.register({
 			global: true,
-			secret: jwtConstants.secret,
-			signOptions: { expiresIn: "60s" },
+			secret: jwtConstants.accessSecret,
+			signOptions: { expiresIn: "15m" },
 		}),
 	],
 	providers: [
 		AuthService,
+		AccessTokenStrategy,
+		RefreshTokenStrategy,
 		{
 			provide: APP_GUARD,
 			useClass: AuthGuard,

@@ -30,7 +30,7 @@ export const dataSourceOptions: DataSourceOptions & SeederOptions = {
 		"dist/backend/database/factories/**/*{.ts,.js}",
 	],
 	seedTracking: false,
-	synchronize: process.env.DB_SYNCHRONIZE === "true",
+	synchronize: process.env.DB_SYNCHRONIZE === "true", // Disable on production
 	logging: process.env.NODE_ENV === "development",
 	namingStrategy: new SnakeNamingStrategy(),
 	cache: true,
