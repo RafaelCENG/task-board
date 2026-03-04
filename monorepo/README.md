@@ -50,26 +50,26 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 # Database
  ## Tables
 - User
-  - id (primary key)
-  - email
-  - password
-  - created_at
+  - id (primary key) -> uuid
+  - email -> string
+  - password -> string
+  - created_at -> Date
   
 - Board
-    - id (primary key)
-    - name
-    - description
+    - id (primary key) -> number
+    - name -> string
+    - description -> string
     - user_id (foreign key to User)
 
 - Task
-    - id (primary key)
-    - name
-    - description
-    - icon
-    - status (ToDo, InProgress, Completed, WontDo)
+    - id (primary key) -> number
+    - name -> string
+    - description -> string
+    - icon -> string
+    - status (ToDo, InProgress, Completed, WontDo) -> enum
     - board_id (foreign key to Board)
 
-- User_Board 
+- User_Board -> **ONLY IF USERS CAN SHARE BOARDS**
     - user_id (foreign key to User)
     - board_id (foreign key to Board)
 
@@ -81,10 +81,12 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - https://docs.nestjs.com/ - For NestJS documentation and resources
 - [Organizing nestjs folder structure](https://medium.com/@handi7.co/organizing-your-nestjs-code-the-ultimate-guide-to-scalable-folder-structures-%EF%B8%8F-7fcb54fb1863)
 - typeorm.io - For TypeORM documentation and resources
-- [Nestjs-typeorm-Postgress] - https://dev.to/refifauzan/nestjs-with-typeorm-and-postgresql-3466
+- [Nestjs-typeorm-Postgress](https://dev.to/refifauzan/nestjs-with-typeorm-and-postgresql-3466)
+- [Nest-js encrypting password](https://medium.com/@awaisshaikh94/encrypting-passwords-in-nestjs-with-the-robust-hashing-mechanism-of-bcrypt-e052c7a499a3)
 
 
 # Roadmap
+- [x] Create DB tables and relations
 - [ ] Auth must be JWT token based. Use symetric signing (HS256) and produce Access Token + Refresh Token pair.
 - [ ] Use bcrypt to hash user passwords before saving the to the database.
 - [ ] Sign-up/sign-in page

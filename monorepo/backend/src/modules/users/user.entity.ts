@@ -2,9 +2,10 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
+	OneToMany,
 	PrimaryGeneratedColumn,
 } from "typeorm";
-
+import { Board } from "../board/board.entity";
 @Entity({ name: "users" })
 export class User {
 	@PrimaryGeneratedColumn("uuid")
@@ -18,4 +19,10 @@ export class User {
 
 	@CreateDateColumn({ nullable: true })
 	created_at?: Date;
+
+	@OneToMany(
+		(type) => Board,
+		(board) => board.user,
+	)
+	boards: Board[];
 }
