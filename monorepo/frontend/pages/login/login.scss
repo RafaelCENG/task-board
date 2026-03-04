@@ -1,0 +1,36 @@
+$font-family: Inter, system-ui, -apple-system, sans-serif;
+$border-color: #ccc;
+$text-muted: #666;
+$border-radius: 4px;
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  padding: 1rem;
+  font-family: $font-family;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  input {
+    padding: 0.5rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    font-family: inherit;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  p {
+    margin: 0.5rem 0;
+    color: $text-muted;
+  }
+}

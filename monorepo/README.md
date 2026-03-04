@@ -87,6 +87,7 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - [Cookie refresh token](https://stackoverflow.com/questions/79405724/refresh-token-coming-from-nest-js-as-cookie-does-not-get-persisted-after-refresh)
 - [nestjs-jwt-authentication-refresh-token](https://www.elvisduru.com/blog/nestjs-jwt-authentication-refresh-token)
 - [Helpful Github for token authentication](https://github.com/elvisduru/token-auth-app)
+- [Frontend angular-auth](https://blog.lunatech.com/posts/2025-05-06-part-3%3A-frontend-setup-with-angular)
 
 # Roadmap
 - [x] Create DB tables and relations
@@ -109,7 +110,7 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 
 
 # Improvements
--  Pass refresh token using cookies to avoid XSS attacks and to make it more secure.
+-  Pass refresh token using cookies to be more secure and prevent XSS attacks (Cross-Site-Scripting).
 
 # How to Run a migration / seeding
 

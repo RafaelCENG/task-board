@@ -1,81 +1,91 @@
 {
-	"name": "frontend",
-	"$schema": "../node_modules/nx/schemas/project-schema.json",
-	"projectType": "application",
-	"prefix": "app",
-	"sourceRoot": "frontend/src",
-	"tags": [],
-	"targets": {
-		"build": {
-			"executor": "@angular/build:application",
-			"outputs": ["{options.outputPath}"],
-			"options": {
-				"outputPath": "dist/frontend",
-				"browser": "frontend/src/main.ts",
-				"index": "frontend/src/index.html",
-				"tsConfig": "frontend/tsconfig.app.json",
-				"inlineStyleLanguage": "scss",
-				"assets": [
-					{
-						"glob": "**/*",
-						"input": "frontend/public"
-					}
-				],
-				"styles": ["frontend/src/styles.scss"]
-			},
-			"configurations": {
-				"production": {
-					"outputPath": "dist/frontend",
-					"budgets": [
-						{
-							"type": "initial",
-							"maximumWarning": "500kb",
-							"maximumError": "1mb"
-						},
-						{
-							"type": "anyComponentStyle",
-							"maximumWarning": "4kb",
-							"maximumError": "8kb"
-						}
-					],
-					"outputHashing": "all"
-				},
-				"development": {
-					"outputPath": "dist/frontend",
-					"optimization": false,
-					"extractLicenses": false,
-					"sourceMap": true
-				}
-			},
-			"defaultConfiguration": "production"
-		},
-		"serve": {
-			"continuous": true,
-			"executor": "@nx/angular:dev-server",
-			"options": {
-				"buildTarget": "frontend:build"
-			},
-			"configurations": {
-				"production": {
-					"buildTarget": "frontend:build:production"
-				},
-				"development": {
-					"buildTarget": "frontend:build:development"
-				}
-			},
-			"defaultConfiguration": "development"
-		},
-		"lint": {
-			"executor": "@nx/eslint:lint"
-		},
-		"serve-static": {
-			"continuous": true,
-			"executor": "@nx/web:file-server",
-			"options": {
-				"buildTarget": "frontend:build",
-				"staticFilePath": "dist/frontend/browser",
-				"spa": true
-			}
-		}
-	}
+  "name": "frontend",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "frontend/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/frontend",
+        "browser": "frontend/src/main.ts",
+        "index": "frontend/src/index.html",
+        "tsConfig": "frontend/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "frontend/public"
+          }
+        ],
+        "styles": [
+          "frontend/src/styles.scss"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "outputPath": "dist/frontend",
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "outputPath": "dist/frontend",
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "frontend/src/environments/environment.ts",
+              "with": "frontend/src/environments/environment.development.ts"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "buildTarget": "frontend:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "frontend:build:production"
+        },
+        "development": {
+          "buildTarget": "frontend:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "frontend:build",
+        "staticFilePath": "dist/frontend/browser",
+        "spa": true
+      }
+    }
+  }
 }

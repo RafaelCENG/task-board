@@ -6,7 +6,7 @@
 		"useIgnoreFile": true
 	},
 	"files": {
-		"includes": ["**", "!!**/dist"]
+		"includes": ["**", "!!**/dist", "!!**/*.html"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -29,6 +29,13 @@
 			"quoteStyle": "double"
 		}
 	},
+	"html": {
+		"formatter": {
+			"enabled": true
+		},
+		"experimentalFullSupportEnabled": true
+	},
+
 	"assist": {
 		"enabled": true,
 		"actions": {
