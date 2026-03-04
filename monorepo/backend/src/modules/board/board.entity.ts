@@ -23,7 +23,9 @@ export class Board {
 	@Column()
 	user_id: string;
 
-	@ManyToOne(() => User)
+	@ManyToOne(() => User, {
+		onDelete: "CASCADE",
+	})
 	@JoinColumn({ name: "user_id" })
 	user: User;
 
@@ -31,5 +33,5 @@ export class Board {
 		() => Task,
 		(task) => task.board,
 	)
-	tasks: Task[];
+	tasks?: Task[];
 }

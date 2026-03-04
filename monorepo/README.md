@@ -83,6 +83,8 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - typeorm.io - For TypeORM documentation and resources
 - [Nestjs-typeorm-Postgress](https://dev.to/refifauzan/nestjs-with-typeorm-and-postgresql-3466)
 - [Nest-js encrypting password](https://medium.com/@awaisshaikh94/encrypting-passwords-in-nestjs-with-the-robust-hashing-mechanism-of-bcrypt-e052c7a499a3)
+- [Connect PostgreSQL to NestJS using TypeORM and View Data in PgAdmin
+](https://www.youtube.com/watch?v=PP6SfHZE1uE)
 
 
 # Roadmap
