@@ -7,9 +7,11 @@ import {
 	resource,
 } from "@angular/core";
 import { Board } from "../../services/board";
+import { Task } from "../task/task";
 
 @Component({
 	selector: "app-boards",
+	imports: [Task],
 	templateUrl: "./boards.html",
 	styleUrl: "./boards.scss",
 })

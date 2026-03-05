@@ -4,9 +4,7 @@
 		<p>{{ defaultBoard()?.description }}</p>
 		@for(task of defaultBoard()?.tasks || []; track task.id ) {
 			<div>
-				<h4>{{ task.name }}</h4>
-				<p>{{ task.description }}</p>
-				<p>Status: {{ task.status }}</p>
+                  <app-task [task]="task"/>
 			</div>
 		}
 	</div>
