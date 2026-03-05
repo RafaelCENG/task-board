@@ -29,4 +29,22 @@ export class BoardService {
 			relations: { tasks: true },
 		});
 	}
+
+	async findOne(id: string): Promise<Board | null> {
+		return await this.boardModel.findOne({
+			where: { id: Number(id) },
+			relations: { tasks: true },
+		});
+	}
+
+	async createNewBoard(userId: string) {
+		const createdBoard = this.boardModel.create({
+			name: "New Board",
+			description: "New Empty Board",
+			user: { id: userId },
+		});
+		const savedBoard = await this.boardModel.save(createdBoard);
+		await this.taskService.createDefaultTasksForBoard(savedBoard.id);
+		return savedBoard;
+	}
 }

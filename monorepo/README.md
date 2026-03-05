@@ -94,6 +94,7 @@ npm run seed:run populate-db.ts
 - [nestjs-jwt-authentication-refresh-token](https://www.elvisduru.com/blog/nestjs-jwt-authentication-refresh-token)
 - [Helpful Github for token authentication](https://github.com/elvisduru/token-auth-app)
 - [Frontend angular-auth](https://blog.lunatech.com/posts/2025-05-06-part-3%3A-frontend-setup-with-angular)
+- [Select for board](https://angular.dev/guide/aria/select#basic-select)
 
 # Roadmap
 - [x] Create DB tables and relations
@@ -111,12 +112,14 @@ npm run seed:run populate-db.ts
 - [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
 - [ ] A Readme.md with detailed instructions on how to run the project or any information that the reviewer will need to know.
 - [ ] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
-- [ ] Your API endpoints must follow the REST architectural style.
+- [x] Your API endpoints must follow the REST architectural style.
 - [ ] API must include migrations and/or seeders to allow populating the Database. 
 
 
 # Improvements
 -  Pass refresh token using cookies to be more secure and prevent XSS attacks (Cross-Site-Scripting).
+-  Incase a board doesnt exists redirect user to the default board instead of showing home page without a board
+-  Delete board. If the deleted board was default make the next one default.
 
 # How to Run a migration / seeding
 

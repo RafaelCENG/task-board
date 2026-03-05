@@ -8,4 +8,6 @@ export const appRoutes: Route[] = [
 	{ path: "login", component: Login },
 	{ path: "register", component: Register },
 	{ path: "home", component: Home, canActivate: [authGuard] },
+	{ path: "home/board/:id", component: Home, canActivate: [authGuard] },
+	{ path: "**", component: Home, canActivate: [authGuard] },
 ];

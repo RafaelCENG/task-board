@@ -1,11 +1,48 @@
+<div>
+<div ngCombobox readonly>
+  <div #origin class="select">
+    <span class="combobox-label">
+      <span class="selected-label-text">{{ displayValue() }}</span>
+    </span>
+    <input aria-label="Label dropdown" placeholder="Select a label" ngComboboxInput />
+    <span class="example-arrow material-symbols-outlined" translate="no" aria-hidden="true"
+      >arrow_drop_down</span
+    >
+  </div>
+
+  <ng-template ngComboboxPopupContainer>
+    <ng-template
+      [cdkConnectedOverlay]="{origin, usePopover: 'inline', matchWidth: true}"
+      [cdkConnectedOverlayOpen]="true"
+    >
+      <div class="example-popup-container">
+        <div ngListbox>
+        @for (board of boards(); let i = $index; track board) {
+            <div ngOption [value]="board.name" [label]="board.name" tabindex="0"  (click)="onSelectBoard(board.id)" (keydown.enter)="onSelectBoard(board.id)">
+              <span class="example-option-text">{{ board.name }}</span>
+              <span
+                class="example-option-check material-symbols-outlined"
+                translate="no"
+                aria-hidden="true"
+                >check</span
+              >
+            </div>
+          }
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
 <section class="results">
-	<div>
-		<h3>{{ defaultBoard()?.title }}</h3>
-		<p>{{ defaultBoard()?.description }}</p>
-		@for(task of defaultBoard()?.tasks || []; track task.id ) {
-			<div>
-                  <app-task [task]="task"/>
-			</div>
-		}
-	</div>
+    <div>
+        <h3>{{ selectedBoard()?.name }}</h3>
+        <p>{{ selectedBoard()?.description }}</p>
+        @for(task of selectedBoard()?.tasks || []; track task.id ) {
+        <div>
+            <app-task [task]="task" />
+        </div>
+        }
+    </div>
+
 </section>

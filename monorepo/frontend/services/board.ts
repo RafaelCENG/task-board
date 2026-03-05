@@ -5,7 +5,7 @@ import { environment } from "../src/environments/environment";
 
 export type BoardType = {
 	id: number;
-	title: string;
+	name: string;
 	description: string;
 	user_id: string;
 	isDefault: boolean;
@@ -59,5 +59,18 @@ export class Board {
 			},
 		});
 		return (await data.json()) ?? [];
+	}
+
+	createNewBoard(userId: string): Observable<BoardType> {
+		const token = localStorage.getItem("accessToken");
+		return this.http.post<BoardType>(
+			`${environment.apiUrl}/board/new/${userId}`,
+			{},
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			},
+		);
 	}
 }

@@ -1,5 +1,6 @@
 <div>
-  <app-boards [userId]="userId"/>
+  <app-boards [userId]="userId" [boardId]="boardId()"/>
   <button (click)="onLogout()">Logout</button>
+  <button (click)="onCreateNewBoard()">Create New Board</button>
 </div>
 
