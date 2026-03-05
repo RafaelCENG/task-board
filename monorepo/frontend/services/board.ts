@@ -73,4 +73,18 @@ export class Board {
 			},
 		);
 	}
+
+	async setDefaultBoard(userId: string, boardId: string): Promise<string> {
+		const token = localStorage.getItem("accessToken");
+
+		const data = await fetch(`${environment.apiUrl}/board/default`, {
+			method: "PUT",
+			headers: {
+				Authorization: `Bearer ${token}`,
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ userId, boardId }),
+		});
+		return (await data.text()) ?? "Error setting default board";
+	}
 }

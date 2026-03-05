@@ -34,6 +34,10 @@
   </ng-template>
 </div>
 
+
+  <button (click)="onDefaultBoard(selectedBoard()?.id ?? 0)">Set as Default</button>
+
+
 <section class="results">
     <div>
         <h3>{{ selectedBoard()?.name }}</h3>

@@ -103,8 +103,8 @@ npm run seed:run populate-db.ts
 - [x] Sign-up/sign-in page
 - [x] New sign-up a new `default` board is created and saved to the database for the user.
 - [x] Default board includes 4 default tasks (similar to the design).
-- [ ] Users are always presented with the default board but can create new boards or switch to existing ones. Each board can be accessed by a unique id, e.g: /board/:board-id, also allowing the user to switch to a different board by using the address bar directly.
-- [ ] Users can change their default board.
+- [x] Users are always presented with the default board but can create new boards or switch to existing ones. Each board can be accessed by a unique id, e.g: /board/:board-id, also allowing the user to switch to a different board by using the address bar directly.
+- [x] Users can change their default board.
 - [ ] Users can edit board name and optionally, board description as well.
 - [ ] Users can edit task name, description, icon, and status.
 - [ ] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).

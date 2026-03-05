@@ -74,6 +74,15 @@ export class Boards {
 		this.router.navigate(["/home/board", boardId]);
 	}
 
+	onDefaultBoard(boardId: number) {
+		console.log({ boardId });
+		this.boardService
+			.setDefaultBoard(this.userId(), String(boardId))
+			.then(() => {
+				this.boardsResource.reload();
+			});
+	}
+
 	constructor() {
 		effect(() => {
 			console.log("Boards loaded:", this.boards());
