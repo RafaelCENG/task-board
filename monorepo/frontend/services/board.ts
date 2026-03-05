@@ -8,6 +8,16 @@ export type BoardType = {
 	title: string;
 	description: string;
 	user_id: string;
+	isDefault: boolean;
+	tasks: [
+		{
+			id: number;
+			name: string;
+			description: string;
+			status: string;
+			icon: string;
+		},
+	];
 };
 
 @Injectable({

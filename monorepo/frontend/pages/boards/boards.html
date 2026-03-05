@@ -1,0 +1,13 @@
+<section class="results">
+	<div>
+		<h3>{{ defaultBoard()?.title }}</h3>
+		<p>{{ defaultBoard()?.description }}</p>
+		@for(task of defaultBoard()?.tasks || []; track task.id ) {
+			<div>
+				<h4>{{ task.name }}</h4>
+				<p>{{ task.description }}</p>
+				<p>Status: {{ task.status }}</p>
+			</div>
+		}
+	</div>
+</section>
