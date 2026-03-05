@@ -30,25 +30,14 @@
 <button type="submit" [disabled]="loginForm().invalid()">Log in</button>
 </form> -->
 
-<form
-  [formGroup]="form"
-  (ngSubmit)="onSubmit()"
-  class="mt-4 p-4 border rounded shadow-sm bg-white"
-  style="max-width: 400px; margin: auto"
->
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4 p-4 border rounded shadow-sm bg-white"
+  style="max-width: 400px; margin: auto">
   <h2 class="text-center mb-4">Login</h2>
 
   <div class="mb-3">
-    <input
-      formControlName="email"
-      type="email"
-      class="form-control"
-      placeholder="Email"
-      [class.is-invalid]="
+    <input formControlName="email" type="email" class="form-control" placeholder="Email" [class.is-invalid]="
         form.get('email')?.invalid && form.get('email')?.touched
-      "
-      aria-label="Email"
-    />
+      " aria-label="Email" />
     <!-- <div
       *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
       class="invalid-feedback"
@@ -58,16 +47,9 @@
   </div>
 
   <div class="mb-3">
-    <input
-      formControlName="password"
-      type="password"
-      class="form-control"
-      placeholder="Password"
-      [class.is-invalid]="
+    <input formControlName="password" type="password" class="form-control" placeholder="Password" [class.is-invalid]="
         form.get('password')?.invalid && form.get('password')?.touched
-      "
-      aria-label="Password"
-    />
+      " aria-label="Password" />
     <!-- <div
       *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
       class="invalid-feedback"
@@ -87,9 +69,9 @@
     ></span> -->
     Login
   </button>
-    
-  <button>
-  <a routerLink="/register">Register</a>
-  </button>
 
 </form>
+
+
+<button routerLink="/register">Register</button>
+

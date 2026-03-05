@@ -20,9 +20,6 @@ export class Board {
 	@Column({ nullable: true })
 	description: string;
 
-	@Column()
-	user_id: string;
-
 	@ManyToOne(() => User, {
 		onDelete: "CASCADE",
 	})

@@ -6,7 +6,7 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { Auth } from "../../services/auth";
 
 // interface LoginData {
@@ -16,7 +16,7 @@ import { Auth } from "../../services/auth";
 
 @Component({
 	selector: "app-login",
-	imports: [ReactiveFormsModule, CommonModule],
+	imports: [ReactiveFormsModule, CommonModule, RouterLink],
 	templateUrl: "./login.html",
 	styleUrl: "./login.scss",
 })

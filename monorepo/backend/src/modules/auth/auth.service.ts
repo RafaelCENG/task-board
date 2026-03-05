@@ -32,6 +32,7 @@ export class AuthService {
 			...createUserDto,
 			password: hashedPassword,
 		});
+
 		const tokens = await this.getTokens(newUser.id, newUser.email);
 		await this.updateRefreshToken(newUser.id, tokens.refreshToken);
 		return tokens;

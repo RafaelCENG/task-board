@@ -44,6 +44,11 @@ To run both frontend and backend, go to the root folder called monorepo and run 
  $ npm run dev
 ```
 
+## To populate the database with seed data
+```
+npm run seed:run populate-db.ts
+```
+
 
 # Database
  ## Tables
@@ -93,9 +98,9 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - [x] Create DB tables and relations
 - [x] Auth must be JWT token based. Use symetric signing (HS256) and produce Access Token + Refresh Token pair. 
 - [x] Use bcrypt to hash user passwords before saving the to the database.
-- [ ] Sign-up/sign-in page
-- [ ] New sign-up a new `default` board is created and saved to the database for the user.
-- [ ] Default board includes 4 default tasks (similar to the design).
+- [x] Sign-up/sign-in page
+- [x] New sign-up a new `default` board is created and saved to the database for the user.
+- [x] Default board includes 4 default tasks (similar to the design).
 - [ ] Users are always presented with the default board but can create new boards or switch to existing ones. Each board can be accessed by a unique id, e.g: /board/:board-id, also allowing the user to switch to a different board by using the address bar directly.
 - [ ] Users can change their default board.
 - [ ] Users can edit board name and optionally, board description as well.
