@@ -63,6 +63,7 @@ npm run seed:run populate-db.ts
     - name -> string
     - description -> string
     - user_id (foreign key to User)
+    - isDeafult -> boolean
 
 - Task
     - id (primary key) -> number
@@ -160,3 +161,39 @@ Never hardcode database credentials or API keys. NestJS has an excellent @nestjs
 
 ## 4. database/
 If your project uses database migrations or seeding, this folder is the perfect place to keep them organized and separate from your application logic.
+
+
+# Example of getting all the boards for a user
+
+- Tips: Use Angular's resource to manage the state of your data fetching. This allows you to easily handle loading states, errors, and caching.
+- For logging use effect inside a constructor
+
+
+```js
+export class Home {
+	private auth = inject(Auth);
+	private router = inject(Router);
+	private boardService = inject(Board);
+
+	userId = JSON.parse(localStorage.getItem("user") || "null");
+	boardsResource = resource({
+		params: () => ({ id: this.userId }),
+		loader: (params) => this.boardService.getAllBoards(params.params.id),
+		defaultValue: [],
+	});
+
+	boards = computed(() => this.boardsResource.value());
+
+	onLogout() {
+		this.auth.logout().subscribe(() => {
+			this.router.navigate(["/login"]);
+		});
+	}
+
+	constructor() {
+		effect(() => {
+			console.log("Boards loaded:", this.boards());
+		});
+	}
+}
+```

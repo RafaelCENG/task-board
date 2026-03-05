@@ -15,10 +15,18 @@ export class BoardService {
 		const createdBoard = this.boardModel.create({
 			name: "My Task Board",
 			description: "Tasks to keep organized",
+			isDefault: true,
 			user: { id: userId },
 		});
 		const savedBoard = await this.boardModel.save(createdBoard);
 		await this.taskService.createDefaultTasksForBoard(savedBoard.id);
 		return savedBoard;
+	}
+
+	async findAll(user_id: string): Promise<Board[] | null> {
+		return await this.boardModel.find({
+			where: { user: { id: user_id } },
+			relations: { tasks: true },
+		});
 	}
 }

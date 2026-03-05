@@ -12,9 +12,13 @@ export class Auth {
 	login(data: {
 		email: string;
 		password: string;
-	}): Observable<{ accessToken: string; refreshToken: string }> {
+	}): Observable<{
+		accessToken: string;
+		refreshToken: string;
+		userId: string;
+	}> {
 		return this.http
-			.post<{ accessToken: string; refreshToken: string }>(
+			.post<{ accessToken: string; refreshToken: string; userId: string }>(
 				`${environment.apiUrl}/auth/signin`,
 				data,
 			)
@@ -22,6 +26,7 @@ export class Auth {
 				tap((tokens) => {
 					localStorage.setItem("accessToken", tokens.accessToken);
 					localStorage.setItem("refreshToken", tokens.refreshToken);
+					localStorage.setItem("user", JSON.stringify(tokens.userId));
 				}),
 				catchError((error) => {
 					const errorMessage =
