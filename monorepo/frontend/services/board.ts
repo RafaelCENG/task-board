@@ -74,6 +74,19 @@ export class Board {
 		);
 	}
 
+	createNewTask(boardId: string): Observable<BoardType> {
+		const token = localStorage.getItem("accessToken");
+		return this.http.post<BoardType>(
+			`${environment.apiUrl}/task/new/${boardId}`,
+			{},
+			{
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			},
+		);
+	}
+
 	async setDefaultBoard(userId: string, boardId: string): Promise<string> {
 		const token = localStorage.getItem("accessToken");
 

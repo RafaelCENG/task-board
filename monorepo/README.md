@@ -108,12 +108,12 @@ npm run seed:run populate-db.ts
 - [ ] Users can edit board name and optionally, board description as well.
 - [ ] Users can edit task name, description, icon, and status.
 - [ ] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
-- [ ] When users select `Add new task` option, a new task is added with a default name (no form dialog).
-- [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
-- [ ] A Readme.md with detailed instructions on how to run the project or any information that the reviewer will need to know.
+- [x] When users select `Add new task` option, a new task is added with a default name (no form dialog).
+- [x] A Readme.md with detailed instructions on how to run the project or any information that the reviewer will need to know.
 - [ ] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
 - [x] Your API endpoints must follow the REST architectural style.
 - [ ] API must include migrations and/or seeders to allow populating the Database. 
+- [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
 
 
 # Improvements

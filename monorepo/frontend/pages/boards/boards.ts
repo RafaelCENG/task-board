@@ -83,6 +83,14 @@ export class Boards {
 			});
 	}
 
+	onCreateNewTask() {
+		const boardId = this.selectedBoard()?.id;
+		if (!boardId) return;
+		this.boardService.createNewTask(boardId.toString()).subscribe(() => {
+			this.boardsResource.reload();
+		});
+	}
+
 	constructor() {
 		effect(() => {
 			console.log("Boards loaded:", this.boards());

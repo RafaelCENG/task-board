@@ -41,4 +41,14 @@ export class TaskService {
 		const tasks = defaultTasks.map((data) => this.taskRepository.create(data));
 		return this.taskRepository.save(tasks);
 	}
+
+	async createNewTask(boardId: number) {
+		const newTask = this.taskRepository.create({
+			name: "New Task",
+			status: Status.TODO,
+			icon: "book",
+			board: { id: boardId },
+		});
+		return this.taskRepository.save(newTask);
+	}
 }
