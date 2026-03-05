@@ -1,11 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, inject } from "@angular/core";
+import { Router } from "@angular/router";
+import { Auth } from "../../services/auth";
 
 @Component({
-  selector: 'app-home',
-  imports: [],
-  templateUrl: './home.html',
-  styleUrl: './home.scss',
+	selector: "app-home",
+	imports: [],
+	templateUrl: "./home.html",
+	styleUrl: "./home.scss",
 })
 export class Home {
+	private auth = inject(Auth);
+	private router = inject(Router);
 
+	onLogout() {
+		this.auth.logout().subscribe(() => {
+			this.router.navigate(["/login"]);
+		});
+	}
 }

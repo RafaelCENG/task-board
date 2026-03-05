@@ -70,9 +70,12 @@ export class Auth {
 	}
 
 	logout(): Observable<unknown> {
-		return this.http
-			.get(`${environment.apiUrl}/auth/logout`)
-			.pipe(tap(() => localStorage.removeItem("accessToken")));
+		const token = localStorage.getItem("accessToken");
+		localStorage.removeItem("accessToken");
+		localStorage.removeItem("refreshToken");
+		return this.http.get(`${environment.apiUrl}/auth/logout`, {
+			headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
+		});
 	}
 
 	getToken(): string | null {
