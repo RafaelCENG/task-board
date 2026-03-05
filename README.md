@@ -44,6 +44,11 @@ To run both frontend and backend, go to the root folder called monorepo and run 
  $ npm run dev
 ```
 
+## To populate the database with seed data
+```
+npm run seed:run populate-db.ts
+```
+
 
 # Database
  ## Tables
@@ -58,6 +63,7 @@ To run both frontend and backend, go to the root folder called monorepo and run 
     - name -> string
     - description -> string
     - user_id (foreign key to User)
+    - isDeafult -> boolean
 
 - Task
     - id (primary key) -> number
@@ -88,29 +94,32 @@ To run both frontend and backend, go to the root folder called monorepo and run 
 - [nestjs-jwt-authentication-refresh-token](https://www.elvisduru.com/blog/nestjs-jwt-authentication-refresh-token)
 - [Helpful Github for token authentication](https://github.com/elvisduru/token-auth-app)
 - [Frontend angular-auth](https://blog.lunatech.com/posts/2025-05-06-part-3%3A-frontend-setup-with-angular)
+- [Select for board](https://angular.dev/guide/aria/select#basic-select)
 
 # Roadmap
 - [x] Create DB tables and relations
 - [x] Auth must be JWT token based. Use symetric signing (HS256) and produce Access Token + Refresh Token pair. 
 - [x] Use bcrypt to hash user passwords before saving the to the database.
-- [ ] Sign-up/sign-in page
-- [ ] New sign-up a new `default` board is created and saved to the database for the user.
-- [ ] Default board includes 4 default tasks (similar to the design).
-- [ ] Users are always presented with the default board but can create new boards or switch to existing ones. Each board can be accessed by a unique id, e.g: /board/:board-id, also allowing the user to switch to a different board by using the address bar directly.
-- [ ] Users can change their default board.
+- [x] Sign-up/sign-in page
+- [x] New sign-up a new `default` board is created and saved to the database for the user.
+- [x] Default board includes 4 default tasks (similar to the design).
+- [x] Users are always presented with the default board but can create new boards or switch to existing ones. Each board can be accessed by a unique id, e.g: /board/:board-id, also allowing the user to switch to a different board by using the address bar directly.
+- [x] Users can change their default board.
 - [ ] Users can edit board name and optionally, board description as well.
 - [ ] Users can edit task name, description, icon, and status.
 - [ ] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
-- [ ] When users select `Add new task` option, a new task is added with a default name (no form dialog).
-- [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
-- [ ] A Readme.md with detailed instructions on how to run the project or any information that the reviewer will need to know.
+- [x] When users select `Add new task` option, a new task is added with a default name (no form dialog).
+- [x] A Readme.md with detailed instructions on how to run the project or any information that the reviewer will need to know.
 - [ ] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
-- [ ] Your API endpoints must follow the REST architectural style.
+- [x] Your API endpoints must follow the REST architectural style.
 - [ ] API must include migrations and/or seeders to allow populating the Database. 
+- [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
 
 
 # Improvements
 -  Pass refresh token using cookies to be more secure and prevent XSS attacks (Cross-Site-Scripting).
+-  Incase a board doesnt exists redirect user to the default board instead of showing home page without a board
+-  Delete board. If the deleted board was default make the next one default.
 
 # How to Run a migration / seeding
 
@@ -155,3 +164,39 @@ Never hardcode database credentials or API keys. NestJS has an excellent @nestjs
 
 ## 4. database/
 If your project uses database migrations or seeding, this folder is the perfect place to keep them organized and separate from your application logic.
+
+
+# Example of getting all the boards for a user
+
+- Tips: Use Angular's resource to manage the state of your data fetching. This allows you to easily handle loading states, errors, and caching.
+- For logging use effect inside a constructor
+
+
+```js
+export class Home {
+	private auth = inject(Auth);
+	private router = inject(Router);
+	private boardService = inject(Board);
+
+	userId = JSON.parse(localStorage.getItem("user") || "null");
+	boardsResource = resource({
+		params: () => ({ id: this.userId }),
+		loader: (params) => this.boardService.getAllBoards(params.params.id),
+		defaultValue: [],
+	});
+
+	boards = computed(() => this.boardsResource.value());
+
+	onLogout() {
+		this.auth.logout().subscribe(() => {
+			this.router.navigate(["/login"]);
+		});
+	}
+
+	constructor() {
+		effect(() => {
+			console.log("Boards loaded:", this.boards());
+		});
+	}
+}
+```
