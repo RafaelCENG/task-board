@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>Task Details</h2>
+<mat-dialog-content>
+    <div style="display:flex; flex-direction:column;">
+    <mat-form-field>
+        <mat-label>Task Name</mat-label>
+        <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea rows="10" cols="30" matInput [(ngModel)]="description"></textarea>
+    </mat-form-field>
+    </div>
+    <p style="font-size: 14px; color: #666; margin: 8px 0 0;">Icon</p>
+    <div class="icon-selector">
+        <button type="button" class="icon-option" [class.selected]="icon === 'power'" (click)="icon = 'power'">
+            <ng-icon name="heroDocumentCheck" size="32px" />
+      
+        </button>
+        <button type="button" class="icon-option" [class.selected]="icon === 'coffee'" (click)="icon = 'coffee'">
+            <ng-icon name="heroMoon" size="32px" />
+      
+        </button>
+        <button type="button" class="icon-option" [class.selected]="icon === 'book'" (click)="icon = 'book'">
+            <ng-icon name="heroBookOpen" size="32px" />
+      
+        </button>
+        <button type="button" class="icon-option" [class.selected]="icon === 'timer'" (click)="icon = 'timer'">
+            <ng-icon name="heroClock" size="32px" />
+      
+        </button>
+    </div>
+    <p style="font-size: 14px; color: #666; margin: 8px 0 0;">Status</p>
+    <div class="icon-selector">
+        <button type="button" class="icon-option" [class.selected]="status === 'inprogress'" (click)="status = 'inprogress'">
+            <ng-icon name="heroForward" size="24px" color="orange" />
+            <span>In Progress</span>
+        </button>
+        <button type="button" class="icon-option" [class.selected]="status === 'completed'" (click)="status = 'completed'">
+            <ng-icon name="heroCheckBadge" size="24px" color="green" />
+            <span>Completed</span>
+        </button>
+        <button type="button" class="icon-option" [class.selected]="status === 'wontdo'" (click)="status = 'wontdo'">
+            <ng-icon name="heroXCircle" size="24px" color="red" />
+            <span>Won't Do</span>
+        </button>
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button matButton (click)="onNoClick()">Cancel</button>
+    <button matButton [mat-dialog-close]="{ name: name, description: description, status: status, icon: icon }"
+        cdkFocusInitial>Save</button>
+</mat-dialog-actions>

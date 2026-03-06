@@ -44,7 +44,7 @@
     }
     <div class="task-container">
       @for(task of selectedBoard()?.tasks || []; track task.id ) {
-      <app-task [task]="task" />
+      <app-task [task]="task" (taskUpdated)="boardsResource.reload()" />
       }
       <button (click)="onCreateNewTask()" class="add-task">
         <ng-icon name="heroPlusCircle" size="24px" />

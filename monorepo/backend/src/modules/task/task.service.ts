@@ -51,4 +51,19 @@ export class TaskService {
 		});
 		return this.taskRepository.save(newTask);
 	}
+
+	async updateTask(
+		taskId: number,
+		name: string,
+		description: string,
+		status: Status,
+		icon: string,
+	) {
+		return this.taskRepository.update(taskId, {
+			name,
+			description,
+			status,
+			icon,
+		});
+	}
 }

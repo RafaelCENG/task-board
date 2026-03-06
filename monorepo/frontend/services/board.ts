@@ -104,6 +104,25 @@ export class Board {
 		return (await data.text()) ?? "Error renaming board";
 	}
 
+	async updateTask(
+		taskId: number,
+		name: string,
+		description: string,
+		status: string,
+		icon: string,
+	): Promise<string> {
+		const token = localStorage.getItem("accessToken");
+		const data = await fetch(`${environment.apiUrl}/task/update`, {
+			method: "PUT",
+			headers: {
+				Authorization: `Bearer ${token}`,
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ taskId, name, description, status, icon }),
+		});
+		return (await data.text()) ?? "Error updating task";
+	}
+
 	async setDefaultBoard(userId: string, boardId: string): Promise<string> {
 		const token = localStorage.getItem("accessToken");
 

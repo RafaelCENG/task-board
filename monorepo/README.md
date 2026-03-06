@@ -96,6 +96,8 @@ npm run seed:run populate-db.ts
 - [Select for board](https://angular.dev/guide/aria/select#basic-select)
 - [CRUD example with NestJs](https://bhargavacharyb.medium.com/nestjs-6-crud-operations-in-nestjs-using-typeorm-an-e-commerce-example-fcbd287ad97f)
 - [Angular Icons](https://ng-icons.github.io/ng-icons/#/getting-started)
+- [Angular Dialog](https://material.angular.dev/components/dialog/examples)
+- [Event Emits](https://angular.dev/guide/components/outputs)
 
 # Roadmap
 - [x] Create DB tables and relations
@@ -107,13 +109,13 @@ npm run seed:run populate-db.ts
 - [x] Users are always presented with the default board but can create new boards or switch to existing ones. Each board can be accessed by a unique id, e.g: /board/:board-id, also allowing the user to switch to a different board by using the address bar directly.
 - [x] Users can change their default board.
 - [x] Users can edit board name and optionally, board description as well.
-- [ ] Users can edit task name, description, icon, and status.
+- [x] Users can edit task name, description, icon, and status.
 - [ ] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
 - [x] When users select `Add new task` option, a new task is added with a default name (no form dialog).
 - [x] A Readme.md with detailed instructions on how to run the project or any information that the reviewer will need to know.
-- [ ] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
+- [x] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
 - [x] Your API endpoints must follow the REST architectural style.
-- [ ] API must include migrations and/or seeders to allow populating the Database. 
+- [x] API must include migrations and/or seeders to allow populating the Database. 
 - [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
 
 
@@ -121,7 +123,8 @@ npm run seed:run populate-db.ts
 -  Pass refresh token using cookies to be more secure and prevent XSS attacks (Cross-Site-Scripting).
 -  Incase a board doesnt exists redirect user to the default board instead of showing home page without a board
 -  Delete board. If the deleted board was default make the next one default.
-
+- Toast notifications when we create new board, updating tasks etc.
+  
 # How to Run a migration / seeding
 
 ```js

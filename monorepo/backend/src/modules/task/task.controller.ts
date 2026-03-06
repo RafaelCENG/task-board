@@ -1,4 +1,5 @@
-import { Controller, Param, Post } from "@nestjs/common";
+import { Body, Controller, Param, Post, Put } from "@nestjs/common";
+import { Status } from "./task.entity";
 import { TaskService } from "./task.service";
 
 @Controller("task")
@@ -8,5 +9,25 @@ export class TaskController {
 	@Post("/new/:boardId")
 	createNewTask(@Param("boardId") boardId: string) {
 		return this.taskService.createNewTask(Number(boardId));
+	}
+
+	@Put("/update")
+	updateTask(
+		@Body()
+		body: {
+			taskId: number;
+			name: string;
+			description: string;
+			status: Status;
+			icon: string;
+		},
+	) {
+		return this.taskService.updateTask(
+			body.taskId,
+			body.name,
+			body.description,
+			body.status,
+			body.icon,
+		);
 	}
 }
