@@ -6,14 +6,14 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import { Auth } from "../../services/auth";
 
 @Component({
 	selector: "app-register",
 	templateUrl: "./register.html",
 	styleUrls: ["./register.scss"],
-	imports: [ReactiveFormsModule, CommonModule],
+	imports: [ReactiveFormsModule, CommonModule, RouterLink],
 })
 export class Register {
 	form: FormGroup;

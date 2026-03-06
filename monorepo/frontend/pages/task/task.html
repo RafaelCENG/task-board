@@ -1,4 +1,37 @@
-
-<h4>{{ task.name }}</h4>
-<p>{{ task.description }}</p>
-<p>Status: {{ task.status }}</p>
+<div class="task-card {{ task.status }}">
+        <div class="task-row">
+            <div class="task-content">
+                <div class="task-icon">
+                    @if (task.icon === 'power') {
+                    <ng-icon name="heroDocumentCheck" size="32px" />
+                    }
+                    @else if (task.icon === 'coffee') {
+                    <ng-icon name="heroMoon" size="32px" />
+                    }
+                    @else if (task.icon === 'book') {
+                    <ng-icon name="heroBookOpen" size="32px" />
+                    }
+                    @else if (task.icon === 'timer') {
+                    <ng-icon name="heroClock" size="32px" />
+                    }
+                </div>
+                <div class="task-info">
+                    <h3>{{ task.name }}</h3>
+                </div>
+            </div>
+            <div class="task-status {{ task.status }}">
+                @if (task.status === 'completed') {
+                <ng-icon name="heroCheckBadge" size="24px" color="green" />
+                }
+                @else if (task.status === 'inprogress') {
+                <ng-icon name="heroForward" size="24px" color="orange" />
+                }
+                @else if (task.status === 'wontdo') {
+                <ng-icon name="heroXCircle" size="24px" color="red" />
+                }
+            </div>
+        </div>
+        @if (task.description) {
+        <p class="task-description">{{ task.description }}</p>
+        }
+    </div>

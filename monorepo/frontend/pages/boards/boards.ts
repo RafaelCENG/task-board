@@ -18,6 +18,8 @@ import {
 	viewChildren,
 } from "@angular/core";
 import { Router } from "@angular/router";
+import { NgIcon, provideIcons } from "@ng-icons/core";
+import { heroPlusCircle } from "@ng-icons/heroicons/outline";
 import { Board } from "../../services/board";
 import { Task } from "../task/task";
 
@@ -32,9 +34,15 @@ import { Task } from "../task/task";
 		Listbox,
 		Option,
 		OverlayModule,
+		NgIcon,
 	],
 	templateUrl: "./boards.html",
 	styleUrl: "./boards.scss",
+	viewProviders: [
+		provideIcons({
+			heroPlusCircle,
+		}),
+	],
 })
 export class Boards {
 	userId = input("");
@@ -51,7 +59,11 @@ export class Boards {
 	/** The string that is displayed in the combobox. */
 	displayValue = computed(() => {
 		const values = this.listbox()?.values() || [];
-		return values.length ? values[0] : "Select a board";
+		if (values.length) {
+			const board = this.boards().find((b) => b.id === Number(values[0]));
+			return board?.name ?? "Select a board";
+		}
+		return "Select a board";
 	});
 
 	boardsResource = resource({

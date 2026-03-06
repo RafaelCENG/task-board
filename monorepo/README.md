@@ -87,14 +87,15 @@ npm run seed:run populate-db.ts
 - typeorm.io - For TypeORM documentation and resources
 - [Nestjs-typeorm-Postgress](https://dev.to/refifauzan/nestjs-with-typeorm-and-postgresql-3466)
 - [Nest-js encrypting password](https://medium.com/@awaisshaikh94/encrypting-passwords-in-nestjs-with-the-robust-hashing-mechanism-of-bcrypt-e052c7a499a3)
-- [Connect PostgreSQL to NestJS using TypeORM and View Data in PgAdmin
-](https://www.youtube.com/watch?v=PP6SfHZE1uE)
+- [Connect PostgreSQL to NestJS using TypeORM and View Data in PgAdmin](https://www.youtube.com/watch?v=PP6SfHZE1uE)
 - [Building a Login and Registration System Using NestJS with TypeORM and PostgreSQL](https://dev.to/buildwithgagan/building-a-login-and-registration-system-using-nestjs-with-typeorm-and-postgresql-19hh)
 - [Cookie refresh token](https://stackoverflow.com/questions/79405724/refresh-token-coming-from-nest-js-as-cookie-does-not-get-persisted-after-refresh)
 - [nestjs-jwt-authentication-refresh-token](https://www.elvisduru.com/blog/nestjs-jwt-authentication-refresh-token)
 - [Helpful Github for token authentication](https://github.com/elvisduru/token-auth-app)
 - [Frontend angular-auth](https://blog.lunatech.com/posts/2025-05-06-part-3%3A-frontend-setup-with-angular)
 - [Select for board](https://angular.dev/guide/aria/select#basic-select)
+- [CRUD example with NestJs](https://bhargavacharyb.medium.com/nestjs-6-crud-operations-in-nestjs-using-typeorm-an-e-commerce-example-fcbd287ad97f)
+- [Angular Icons](https://ng-icons.github.io/ng-icons/#/getting-started)
 
 # Roadmap
 - [x] Create DB tables and relations

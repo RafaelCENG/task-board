@@ -30,11 +30,10 @@
 <button type="submit" [disabled]="loginForm().invalid()">Log in</button>
 </form> -->
 
-<form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4 p-4 border rounded shadow-sm bg-white"
-  style="max-width: 400px; margin: auto">
-  <h2 class="text-center mb-4">Login</h2>
-
-  <div class="mb-3">
+<div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h2>Task Board</h2>
+  <div>
     <input formControlName="email" type="email" class="form-control" placeholder="Email" [class.is-invalid]="
         form.get('email')?.invalid && form.get('email')?.touched
       " aria-label="Email" />
@@ -46,7 +45,7 @@
     </div> -->
   </div>
 
-  <div class="mb-3">
+  <div>
     <input formControlName="password" type="password" class="form-control" placeholder="Password" [class.is-invalid]="
         form.get('password')?.invalid && form.get('password')?.touched
       " aria-label="Password" />
@@ -62,7 +61,7 @@
     {{ errorMessage }}
   </div> -->
 
-  <button type="submit" class="btn btn-primary w-100" [disabled]="isLoading">
+  <button type="submit" [disabled]="isLoading">
     <!-- <span
       *ngIf="isLoading"
       class="spinner-border spinner-border-sm me-2"
@@ -72,6 +71,9 @@
 
 </form>
 
+<div class="register-div">
+  <p>Don't have an account?</p>
+<button routerLink="/register" class="register-button">Register</button>
+</div>
 
-<button routerLink="/register">Register</button>
-
+</div>
