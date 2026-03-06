@@ -49,6 +49,18 @@ export class BoardService {
 		return savedBoard;
 	}
 
+	async renameBoard(
+		boardId: string,
+		name: string,
+		description?: string,
+	): Promise<string> {
+		await this.boardModel.update(
+			{ id: Number(boardId) },
+			{ name, description },
+		);
+		return "Board renamed successfully";
+	}
+
 	async defaultBoard(defaultBoardDto: DefaultBoardDto): Promise<string> {
 		// First we need to find the current default board and set it to false.
 		await this.boardModel

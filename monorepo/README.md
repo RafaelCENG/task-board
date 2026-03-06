@@ -106,7 +106,7 @@ npm run seed:run populate-db.ts
 - [x] Default board includes 4 default tasks (similar to the design).
 - [x] Users are always presented with the default board but can create new boards or switch to existing ones. Each board can be accessed by a unique id, e.g: /board/:board-id, also allowing the user to switch to a different board by using the address bar directly.
 - [x] Users can change their default board.
-- [ ] Users can edit board name and optionally, board description as well.
+- [x] Users can edit board name and optionally, board description as well.
 - [ ] Users can edit task name, description, icon, and status.
 - [ ] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
 - [x] When users select `Add new task` option, a new task is added with a default name (no form dialog).

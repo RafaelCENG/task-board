@@ -32,8 +32,16 @@
 
 
   <section class="results">
-    <h1>{{ selectedBoard()?.name }}</h1>
-    <p>{{ selectedBoard()?.description }}</p>
+    @if (isEditing) {
+      <input #nameInput [value]="selectedBoard()?.name" (keydown.enter)="descInput.focus()" style="font-weight:bold;" />
+      <input #descInput [value]="selectedBoard()?.description" (keydown.enter)="onSaveBoth(nameInput.value, descInput.value)" (blur)="onSaveBoth(nameInput.value, descInput.value)"/>
+    } @else {
+      <div style="display:flex; flex-direction:row; gap:1rem; align-items:center;">
+        <h1>{{ selectedBoard()?.name }}</h1>
+        <ng-icon name="heroPencilSquare" size="24px" style="cursor:pointer;" (click)="onStartEditing()" />
+      </div>
+      <p>{{ selectedBoard()?.description }}</p>
+    }
     <div class="task-container">
       @for(task of selectedBoard()?.tasks || []; track task.id ) {
       <app-task [task]="task" />

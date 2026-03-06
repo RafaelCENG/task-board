@@ -21,6 +21,17 @@ export class BoardController {
 		return this.boardService.defaultBoard(defaultBoardDto);
 	}
 
+	@Put("/rename")
+	async renameBoard(
+		@Body() body: { boardId: string; name: string; description: string },
+	) {
+		return this.boardService.renameBoard(
+			body.boardId,
+			body.name,
+			body.description,
+		);
+	}
+
 	@Post("/new/:userId")
 	createNewBoard(@Param("userId") userId: string) {
 		return this.boardService.createNewBoard(userId);

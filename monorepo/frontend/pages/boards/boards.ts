@@ -19,7 +19,7 @@ import {
 } from "@angular/core";
 import { Router } from "@angular/router";
 import { NgIcon, provideIcons } from "@ng-icons/core";
-import { heroPlusCircle } from "@ng-icons/heroicons/outline";
+import { heroPencilSquare, heroPlusCircle } from "@ng-icons/heroicons/outline";
 import { Board } from "../../services/board";
 import { Task } from "../task/task";
 
@@ -41,6 +41,7 @@ import { Task } from "../task/task";
 	viewProviders: [
 		provideIcons({
 			heroPlusCircle,
+			heroPencilSquare,
 		}),
 	],
 })
@@ -90,6 +91,24 @@ export class Boards {
 		console.log({ boardId });
 		this.boardService
 			.setDefaultBoard(this.userId(), String(boardId))
+			.then(() => {
+				this.boardsResource.reload();
+			});
+	}
+
+	isEditing = false;
+
+	onStartEditing() {
+		this.isEditing = true;
+	}
+
+	onSaveBoth(newName: string, newDesc: string) {
+		this.isEditing = false;
+		const board = this.selectedBoard();
+		if (!board) return;
+		const name = newName || board.name;
+		this.boardService
+			.renameBoard(String(board.id), name, newDesc || board.description)
 			.then(() => {
 				this.boardsResource.reload();
 			});

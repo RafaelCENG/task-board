@@ -87,6 +87,23 @@ export class Board {
 		);
 	}
 
+	async renameBoard(
+		boardId: string,
+		name: string,
+		description?: string,
+	): Promise<string> {
+		const token = localStorage.getItem("accessToken");
+		const data = await fetch(`${environment.apiUrl}/board/rename`, {
+			method: "PUT",
+			headers: {
+				Authorization: `Bearer ${token}`,
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({ boardId, name, description }),
+		});
+		return (await data.text()) ?? "Error renaming board";
+	}
+
 	async setDefaultBoard(userId: string, boardId: string): Promise<string> {
 		const token = localStorage.getItem("accessToken");
 
