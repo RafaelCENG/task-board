@@ -45,7 +45,7 @@ To run docker go to the root folder called monorepo and run the following comman
  $ docker-compose up -d
 ```
 
-## To run the frotend and backend
+## To run the frontend and backend
 
 To run both frontend and backend, go to the root folder called monorepo and run the following command:
 
