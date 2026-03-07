@@ -6,6 +6,9 @@ Quick Comments:
 - In general with more time I could produce something much better but since I had to do both frontend and backend from zero without knowing the technologies I had to use I'm pretty happy with the result.
 
 
+### Total Time Spent on the project:
+[![wakatime](https://wakatime.com/badge/user/9c6d3438-07a5-4cbc-b6eb-3407ab50b4a8/project/83cbc258-b146-4dd5-8628-8e3b0f54e807.svg)](https://wakatime.com/badge/user/9c6d3438-07a5-4cbc-b6eb-3407ab50b4a8/project/83cbc258-b146-4dd5-8628-8e3b0f54e807)
+
 # How to Run the Web APP
 
 ## Create ENV FILE
@@ -210,3 +213,4 @@ export class Home {
 	}
 }
 ```
+
