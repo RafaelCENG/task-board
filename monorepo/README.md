@@ -1,7 +1,7 @@
 <!-- WEB APP-->
 
 Quick Comments:
-- The UI is not 100% ready. I tried to do as much as possible but no time. Creating new board button, default board, logging out. Also Login/Register form are pretty basic
+- The UI is not 100% ready. I tried to do as much as possible but not enough time. Creating new board button, default board, logging out styling. Also Login/Register form are pretty basic
 - I used Angular Material for my Dialogs. Im not sure if its allowed since Angular Material library (as a base). If I could use the library I would have used it for more components like buttons, inputs, select etc. It would have made the UI look much better and more consistent.
 - In general with more time I could produce something much better but since I had to do both frontend and backend from zero without knowing the technologies I had to use I'm pretty happy with the result.
 
@@ -124,7 +124,7 @@ npm run seed:run populate-db.ts
 - [x] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
 - [x] Your API endpoints must follow the REST architectural style.
 - [x] API must include migrations and/or seeders to allow populating the Database. 
-- [ ] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
+- [x] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
 - [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
 
 
