@@ -124,7 +124,7 @@ npm run seed:run populate-db.ts
 - [x] A docker-compose.yml file that will allow us to bootrstap the entire solution (including Database) easily with Docker.
 - [x] Your API endpoints must follow the REST architectural style.
 - [x] API must include migrations and/or seeders to allow populating the Database. 
-- [ ] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
+- [x] Users can delete tasks by clicking a `Delete` button (confirmation dialog must appear).
 - [ ] **Bonus**: When a board is selected, instead of showing a flat list of tasks, organize the tasks in columns (ToDo, InProgress, Completed, WontDo) and allow users to drag-and-drop tasks to a different column to easily change their status.
 
 
