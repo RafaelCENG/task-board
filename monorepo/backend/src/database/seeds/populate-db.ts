@@ -1,3 +1,4 @@
+import * as bcrypt from "bcrypt";
 import type { DataSource } from "typeorm";
 import type { Seeder } from "typeorm-extension";
 import { Board } from "../../modules/board/board.entity";
@@ -12,10 +13,11 @@ export class Users1772549092436 implements Seeder {
 		const boardRepo = dataSource.getRepository(Board);
 		const taskRepo = dataSource.getRepository(Task);
 
+		const hashedPassword = await bcrypt.hash("12345678", 10);
 		const [savedUser] = await userRepo.save([
 			{
 				email: "test@gmail.com",
-				password: "12345678",
+				password: hashedPassword,
 			},
 		]);
 
@@ -53,5 +55,12 @@ export class Users1772549092436 implements Seeder {
 				board: { id: savedBoard.id },
 			},
 		]);
+
+		await boardRepo.save({
+			name: "My Second Board",
+			description: "Another board with sample tasks",
+			isDefault: true,
+			user: { id: savedUser.id },
+		});
 	}
 }
