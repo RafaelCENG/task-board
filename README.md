@@ -1,7 +1,7 @@
 <!-- WEB APP-->
 
 Quick Comments:
-- The UI is not 100% ready. I tried to do as much as possible but not enough time. Creating new board button, default board, logging out styling. Also Login/Register form are pretty basic
+- The UI is not 100% ready. I tried to do as much as possible but not enough time. Creating new board button, default board, logging out styling. 
 - I used Angular Material for my Dialogs. Im not sure if its allowed since Angular Material library (as a base). If I could use the library I would have used it for more components like buttons, inputs, select etc. It would have made the UI look much better and more consistent.
 - In general with more time I could produce something much better but since I had to do both frontend and backend from zero without knowing the technologies I had to use I'm pretty happy with the result.
 
