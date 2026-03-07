@@ -66,4 +66,8 @@ export class TaskService {
 			icon,
 		});
 	}
+
+	async deleteTask(taskId: number) {
+		return this.taskRepository.delete(taskId);
+	}
 }

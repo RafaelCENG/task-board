@@ -3,8 +3,8 @@ import {
 	Component,
 	EventEmitter,
 	Input,
-	Output,
 	inject,
+	Output,
 } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
@@ -27,6 +27,7 @@ import {
 	heroDocumentCheck,
 	heroForward,
 	heroMoon,
+	heroTrash,
 	heroXCircle,
 } from "@ng-icons/heroicons/outline";
 import { Board } from "../../services/board";
@@ -63,6 +64,7 @@ export interface DialogData {
 			heroCheckBadge,
 			heroXCircle,
 			heroForward,
+			heroTrash,
 		}),
 	],
 	templateUrl: "./task.html",
@@ -73,6 +75,7 @@ export class Task {
 	@Input() task: TaskType = {} as TaskType;
 	@Output() taskUpdated = new EventEmitter<void>();
 	readonly dialog = inject(MatDialog);
+	readonly deleteDialog = inject(MatDialog);
 	private taskService = inject(Board);
 
 	openDialog(): void {
@@ -92,13 +95,27 @@ export class Task {
 				this.task.description = result.description;
 				this.task.status = result.status;
 				this.task.icon = result.icon;
-				this.taskService.updateTask(
-					this.task.id,
-					result.name,
-					result.description,
-					result.status,
-					result.icon,
-				).then(() => {
+				this.taskService
+					.updateTask(
+						this.task.id,
+						result.name,
+						result.description,
+						result.status,
+						result.icon,
+					)
+					.then(() => {
+						this.taskUpdated.emit();
+					});
+			}
+		});
+	}
+
+	openDeleteDialog(): void {
+		const dialogRef = this.deleteDialog.open(DeleteDialog);
+
+		dialogRef.afterClosed().subscribe((result) => {
+			if (result !== undefined) {
+				this.taskService.deleteTask(this.task.id).then(() => {
 					this.taskUpdated.emit();
 				});
 			}
@@ -168,5 +185,26 @@ export class TaskDialog {
 	icon = this.data.icon;
 	onNoClick(): void {
 		this.dialogRef.close();
+	}
+}
+
+@Component({
+	selector: "app-delete-dialog",
+	templateUrl: "delete-dialog.html",
+	imports: [
+		MatFormFieldModule,
+		MatInputModule,
+		MatButtonModule,
+		MatDialogTitle,
+		MatDialogContent,
+		MatDialogActions,
+		MatDialogClose,
+	],
+})
+export class DeleteDialog {
+	readonly deleteDialogRef = inject(MatDialogRef<DeleteDialog>);
+
+	onNoClick(): void {
+		this.deleteDialogRef.close();
 	}
 }

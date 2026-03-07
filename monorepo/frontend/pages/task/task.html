@@ -1,5 +1,6 @@
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+ <div style="display:flex; flex-direction: row;">
 <div class="task-card {{ task.status }}" (click)="openDialog()" style="cursor:pointer;">
         <div class="task-row">
             <div class="task-content">
@@ -37,4 +38,7 @@
         <p class="task-description">{{ task.description }}</p>
         }
     </div>
-
+    <button mat-icon-button color="warn" (click)="openDeleteDialog()">
+        <ng-icon name="heroTrash" size="20px" />
+    </button>
+</div>

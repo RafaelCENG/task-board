@@ -123,6 +123,17 @@ export class Board {
 		return (await data.text()) ?? "Error updating task";
 	}
 
+	async deleteTask(taskId: number): Promise<string> {
+		const token = localStorage.getItem("accessToken");
+		const data = await fetch(`${environment.apiUrl}/task/delete/${taskId}`, {
+			method: "DELETE",
+			headers: {
+				Authorization: `Bearer ${token}`,
+			},
+		});
+		return (await data.text()) ?? "Error deleting task";
+	}
+
 	async setDefaultBoard(userId: string, boardId: string): Promise<string> {
 		const token = localStorage.getItem("accessToken");
 

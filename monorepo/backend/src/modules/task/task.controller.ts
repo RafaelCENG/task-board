@@ -1,4 +1,4 @@
-import { Body, Controller, Param, Post, Put } from "@nestjs/common";
+import { Body, Controller, Delete, Param, Post, Put } from "@nestjs/common";
 import { Status } from "./task.entity";
 import { TaskService } from "./task.service";
 
@@ -29,5 +29,10 @@ export class TaskController {
 			body.status,
 			body.icon,
 		);
+	}
+
+	@Delete("/delete/:taskId")
+	deleteTask(@Param("taskId") taskId: string) {
+		return this.taskService.deleteTask(Number(taskId));
 	}
 }
